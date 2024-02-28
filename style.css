@@ -1,0 +1,15 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-color: rgba(0, 0, 0, 0.94);
+    width: 100%;
+    text-align: center;
+}
+
+#canvas{
+    background-color: rgb(0, 0, 0);
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid rgb(163, 163, 163);
+}
