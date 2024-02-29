@@ -2,7 +2,7 @@ import { canvasParam } from "../../canvasParam.js";
 import { Alien } from "../alien/alien-class.js";
 
 export class Grid{
-    constructor(){
+    constructor({colums, rows}) {
         this.position = { 
             x: 0,
             y: 0
@@ -12,28 +12,50 @@ export class Grid{
             y: 0
         }
         this.invaders = []
-        let rows = Math.floor( (canvasParam.canvas.height / 20) * ( 1 / 5) );
-        const colums = Math.floor( (canvasParam.canvas.width / 10) * (1 / 5) );
-        this.height = rows * 34;
-        this.width = colums * 34;
-        for (let x = 0; x < colums; x++) {
-			for(let y = 0; y < rows; y++) {
+        this.colums = colums;
+        this.rows = rows;
+        this.scale = 37;
+        let adjustment = 8.5;
+        this.width = this.colums * this.scale - adjustment;
+        this.height = this.rows * this.scale;
+        this.draw();
+    }
+    draw() { 
+        for (let x = 0; x < this.colums; x++) {
+            for(let y = 0; y < this.rows; y++) {
                 this.invaders.push(new Alien({
                     position:{
-                        x: x * 34,
-                        y: y * 34
+                        x : x * this.scale,
+                        y : y * this.scale
                     }
                 }))
             }
         }
     }
-    update(){
+    update() {
         this.position.x += this.velocity.x;
         this.position.y += this.velocity.y;
         this.velocity.y = 0;
-        if(this.position.x + this.width  >= canvasParam.canvas.width || this.position.x == 0){
-            this.velocity.x = -this.velocity.x;
+        
+        if (this.position.x + this.width  >= canvasParam.canvas.width || this.position.x === 0){
+            this.velocity.x = - this.velocity.x;
             this.velocity.y = 34;
         }
+    }
+    drawDebugCollisionSquare() {
+        const ctx = canvasParam.c;
+        ctx.beginPath();
+        ctx.strokeStyle = 'red';
+        ctx.lineWidth = 1;
+
+        ctx.rect(
+            this.position.x,
+            this.position.y,
+            this.width,
+            this.height
+        );
+
+        ctx.stroke();
+        ctx.closePath();
     }
 }

@@ -1,4 +1,5 @@
 import { gameVariables } from "./gameVariables.js";
+import { init } from "./init.js";
 
 
 gameVariables.scoreTag.innerText = "Score : " + gameVariables.stock;
