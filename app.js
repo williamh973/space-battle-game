@@ -5,7 +5,6 @@ import { checkAlienMissileOffscreenBottom, missilePlayerUpdate } from "./spawn-c
 import { particleUpdate } from "./spawn-controller/particle/particle-update.js";
 import { alienMissileFireRate } from "./spawn-controller/missile/alien-missile-fire-rate.js";
 import { playerMissileCollideInvaders } from "./spawn-controller/missile/player-missile-collide.js";
-import { gridLevel } from "./levels/levels.js";
 
 
 
@@ -17,11 +16,9 @@ const animate = () => {
     requestAnimationFrame(animate);
     
     gameVariables.grids.forEach((grid, indexGrid) => {
-        grid.update();
         grid.drawDebugCollisionSquare();
-        
+        grid.update();
         alienMissileFireRate(grid);
-        
         grid.invaders.forEach((invader, indexI) => {
             invader.update({
                 velocity : grid.velocity
@@ -39,5 +36,5 @@ const animate = () => {
     gameVariables.frames++;
 };
 animate();
-gridLevel();
+
 

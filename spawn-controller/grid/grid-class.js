@@ -1,8 +1,9 @@
 import { canvasParam } from "../../canvasParam.js";
+import { gameVariables } from "../../gameVariables.js";
 import { Alien } from "../alien/alien-class.js";
 
 export class Grid{
-    constructor({colums, rows}) {
+    constructor() {
         this.position = { 
             x: 0,
             y: 0
@@ -12,11 +13,10 @@ export class Grid{
             y: 0
         }
         this.invaders = []
-        this.colums = colums;
-        this.rows = rows;
-        this.scale = 37;
-        let adjustment = 8.5;
-        this.width = this.colums * this.scale - adjustment;
+        this.colums = 1 + gameVariables.score;
+        this.rows = 1 + gameVariables.score;
+        this.scale = 35;
+        this.width = this.colums * this.scale;
         this.height = this.rows * this.scale;
         this.draw();
     }

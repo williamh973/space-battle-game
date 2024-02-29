@@ -1,8 +1,9 @@
 import { gameVariables } from "./gameVariables.js";
 import { init } from "./init.js";
+import { Alien } from "./spawn-controller/alien/alien-class.js";
 
 
-gameVariables.scoreTag.innerText = "Score : " + gameVariables.stock;
+gameVariables.scoreTag.innerText = "Score : " + gameVariables.score;
 gameVariables.scoreTag.style.position = "absolute";
 gameVariables.scoreTag.style.top = "10px";
 gameVariables.scoreTag.style.left = "10px"
@@ -35,8 +36,8 @@ export const spawnMissile = () => {
 };
 
 export const adStock = () => {
-    gameVariables.stock += 1;
-    gameVariables.scoreTag.innerText = "Score : " + gameVariables.stock 
+    gameVariables.score += 1;
+    gameVariables.scoreTag.innerText = "Score : " + gameVariables.score 
 };
 
 export const lostLife = () => {

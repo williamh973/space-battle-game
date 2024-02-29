@@ -20,18 +20,26 @@ export const playerMissileCollideInvaders = (
          ) {
           spawnParticles(invader);
           adStock();
+
           setTimeout(() => {
-              grid.invaders.splice(indexI,1);
-              gameVariables.missiles.splice(indexM,1)
-              if(grid.invaders.length === 0 && gameVariables.grids.length == 1 && gameVariables.stock !== 10 ) {
-                  gameVariables.grids.splice(indexGrid,1);
-                  gameVariables.grids.push(new Grid());
-              }
-              if(grid.invaders.length === 0 && gameVariables.grids.length == 1 && gameVariables.stock >= 10 ) {
-                  gameVariables.grids.splice(indexGrid,1);
-                  gameVariables.grids.push(new Grid());
-              }
+              grid.invaders.splice(indexI, 1);
+              gameVariables.missiles.splice(indexM, 1)
+              
+              if(grid.invaders.length === 0 && gameVariables.grids.length == 1) {
+                gameVariables.grids.splice(indexGrid,1);
+                gameVariables.grids.push(new Grid());
+            }
+            //   spawnNewGrid(grid, indexGrid);
+
           },0)
       }
   })
 };
+
+
+const spawnNewGrid = (grid, indexGrid) => {
+    if(grid.invaders.length === 0 && gameVariables.grids.length == 1) {
+        gameVariables.grids.splice(indexGrid, 1);
+        gameVariables.grids.push(new Grid());
+    }
+}
