@@ -21,14 +21,12 @@ const animate = () => {
         updateInvaderNumber(grid);
         alienMissileFireRate(grid);
         grid.update();
-        grid.drawDebugCollisionSquare();
 
 
         grid.invaders.forEach((invader, indexI) => {
             invader.update({
                 velocity : grid.velocity
             });
-            
             checkIfGameOver(invader);
             playerMissileCollideInvaders(grid, invader, indexGrid, indexI);
         })

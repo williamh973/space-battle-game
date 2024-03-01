@@ -1,12 +1,11 @@
 import { canvasParam } from "../../canvasParam.js";
-import { drawTextGameOver } from "../../game-over.js";
 import { gameVariables } from "../../gameVariables.js";
 import { AlienMissile } from "../missile/alien-missile-class.js";
 
 export class Alien{
-    constructor({position}){
+    constructor({position}) {
         this.position = {
-            x: position.x,
+            x: position.x + 2,
             y: position.y
         }
         this.velocity = {
@@ -55,5 +54,22 @@ export class Alien{
                 }
             }))
         }
+    }
+
+    drawDebugCollisionSquare() {
+        const ctx = canvasParam.c;
+        ctx.beginPath();
+        ctx.strokeStyle = 'green';
+        ctx.lineWidth = 1;
+
+        ctx.rect(
+            this.position.x,
+            this.position.y,
+            this.width,
+            this.height
+        );
+
+        ctx.stroke();
+        ctx.closePath();
     }
 };
