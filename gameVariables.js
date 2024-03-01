@@ -7,9 +7,11 @@ export const gameVariables = {
   lifes : 3,
   level : 1,
   scoreTag : document.getElementById('score'),
-  lifeTag : document.getElementById('vie'),
-  tirTag : document.getElementById('tir'),
-  vie : 1,
+  lifeTag : document.getElementById('life'),
+  missileTag : document.getElementById('shoot'),
+  invaderTag : document.getElementById('invaders'),
+  invader : 0,
   score : 0,
-  majTir : 1
+  updateShoot : 1,
+  isGameOver : false
 }

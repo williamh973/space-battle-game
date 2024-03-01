@@ -21,22 +21,26 @@ export class Player{
     }
 
     draw(){
-        canvasParam.c.drawImage(
-            this.image,
-            this.position.x,
-            this.position.y,
-            this.width,
-            this.height
-        );
+        if(this.image && !gameVariables.isGameOver) {
+            canvasParam.c.drawImage(
+                this.image,
+                this.position.x,
+                this.position.y,
+                this.width,
+                this.height,
+            );       
+        }
     }
 
     shoot(){
-        gameVariables.missiles.push(new Missile({
-            position:{
-                x: this.position.x + this.width/2,
-                y: this.position.y
-            },  
-        }));
+        if (!gameVariables.isGameOver) {   
+            gameVariables.missiles.push(new Missile({
+                position:{
+                    x: this.position.x + this.width/2,
+                    y: this.position.y
+                },  
+            }));
+        }
     }
 
    update(){

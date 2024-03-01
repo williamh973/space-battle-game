@@ -1,4 +1,5 @@
 import { canvasParam } from "../../canvasParam.js";
+import { gameVariables } from "../../gameVariables.js";
 
 
 export class AlienMissile{
@@ -8,22 +9,28 @@ export class AlienMissile{
         this.width = 3;
         this.height = 15;
     }
+
     draw(){
       canvasParam.c.beginPath();
       canvasParam.c.save();
       canvasParam.c.fillStyle = 'orange';
+      
       canvasParam.c.fillRect(
         this.position.x,
         this.position.y,
         this.width,
         this.height
         )
+      
       canvasParam.c.fill()
       canvasParam.c.restore()
     }
+
     update(){
+      if(!gameVariables.isGameOver) {
         this.draw()
         this.position.x += this.velocity.x;
         this.position.y += this.velocity.y;
+      }
     }
 };

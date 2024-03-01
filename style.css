@@ -1,15 +1,32 @@
-body{
-    margin: 0;
+* {
     padding: 0;
-    background-color: rgba(0, 0, 0, 0.94);
-    width: 100%;
-    text-align: center;
+    margin: 0;
+}
+
+body{
+    background-color: rgba(0, 0, 0, 0.897);
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
 }
 
 #canvas{
-    background-color: rgb(0, 0, 0);
-    position: absolute;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    border: 1px solid rgb(163, 163, 163);
+    background-color: rgb(0, 2, 14);
+}
+
+#hud {
+    background-color: rgba(0, 0, 0, 0.592);
+    width: 800px;
+    height: 50px;
+    border-radius: 15px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: whitesmoke;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.388);
 }

@@ -8,12 +8,12 @@ export const init = () => {
     gameVariables.alienMissiles = []; 
     gameVariables.particules = [];
     gameVariables.lifes = 3;
+    gameVariables.level = 1;
     gameVariables.scoreTag = document.getElementById('score');
-    gameVariables.lifeTag = document.getElementById('vie');
-    gameVariables.tirTag = document.getElementById('tir');
-    gameVariables.vie = 1;
+    gameVariables.lifeTag = document.getElementById('life');
+    gameVariables.missileTag = document.getElementById('shoot');
     gameVariables.score = 0;
-    gameVariables.majTir = 1
+    gameVariables.updateShoot = 1
     gameVariables.player = new Player(); 
     gameVariables.grids = [new Grid()];
 };

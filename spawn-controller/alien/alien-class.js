@@ -1,4 +1,5 @@
 import { canvasParam } from "../../canvasParam.js";
+import { drawTextGameOver } from "../../game-over.js";
 import { gameVariables } from "../../gameVariables.js";
 import { AlienMissile } from "../missile/alien-missile-class.js";
 
@@ -19,11 +20,10 @@ export class Alien{
             this.width = 32;
             this.height = 32;
         }
-        
     }
 
     draw(){
-        if(this.image){
+        if(this.image && !gameVariables.isGameOver) {
             canvasParam.c.drawImage(
                 this.image,
                 this.position.x,
@@ -38,16 +38,12 @@ export class Alien{
         if(this.image) {
           this.position.x += velocity.x;
           this.position.y += velocity.y;
-          
-          if(this.position.y + this.height >= canvasParam.canvas.height) {
-              console.log('You loose');
-          }
         }
         this.draw();
     }
     
-    shoot(alienMissiles) {
-        if(this.position) {
+    shoot() {
+        if(this.position && !gameVariables.isGameOver) {
             gameVariables.alienMissiles.push(new AlienMissile({
                 position:{
                     x: this.position.x,

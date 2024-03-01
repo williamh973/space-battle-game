@@ -5,25 +5,31 @@ import { checkAlienMissileOffscreenBottom, missilePlayerUpdate } from "./spawn-c
 import { particleUpdate } from "./spawn-controller/particle/particle-update.js";
 import { alienMissileFireRate } from "./spawn-controller/missile/alien-missile-fire-rate.js";
 import { playerMissileCollideInvaders } from "./spawn-controller/missile/player-missile-collide.js";
+import { displayInterface, updateInvaderNumber } from "./interface.js";
+import { checkIfGameOver } from "./game-over.js";
 
 
 
 init();
-
+displayInterface();
 
 const animate = () => {
     canvasParam.c.clearRect( 0, 0, canvasParam.canvas.width, canvasParam.canvas.height);
     requestAnimationFrame(animate);
     
     gameVariables.grids.forEach((grid, indexGrid) => {
-        grid.drawDebugCollisionSquare();
-        grid.update();
+        updateInvaderNumber(grid);
         alienMissileFireRate(grid);
+        grid.update();
+        grid.drawDebugCollisionSquare();
+
+
         grid.invaders.forEach((invader, indexI) => {
             invader.update({
                 velocity : grid.velocity
             });
             
+            checkIfGameOver(invader);
             playerMissileCollideInvaders(grid, invader, indexGrid, indexI);
         })
     })

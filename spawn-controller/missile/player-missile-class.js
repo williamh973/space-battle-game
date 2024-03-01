@@ -1,4 +1,5 @@
 import { canvasParam } from "../../canvasParam.js";
+import { gameVariables } from "../../gameVariables.js";
 
 export class Missile{
     constructor({position}){
@@ -22,7 +23,9 @@ export class Missile{
       canvasParam.c.restore()
     }
     update(){
+      if(!gameVariables.isGameOver) {
         this.position.y += this.velocity.y;
         this.draw();
+      }
     }
 } 

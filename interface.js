@@ -1,50 +1,36 @@
 import { gameVariables } from "./gameVariables.js";
 import { init } from "./init.js";
-import { Alien } from "./spawn-controller/alien/alien-class.js";
 
 
-gameVariables.scoreTag.innerText = "Score : " + gameVariables.score;
-gameVariables.scoreTag.style.position = "absolute";
-gameVariables.scoreTag.style.top = "10px";
-gameVariables.scoreTag.style.left = "10px"
-gameVariables.scoreTag.style.font = "italic 25px impact"
-gameVariables.scoreTag.style.color = "white"
-gameVariables.scoreTag.style.textShadow = "3px 3px 2px purple"
-
-// la vie
-gameVariables.lifeTag.innerText = "Vie : " + gameVariables.lifes;
-gameVariables.lifeTag.style.position = "absolute";
-gameVariables.lifeTag.style.top = "50px";
-gameVariables.lifeTag.style.left = "10px"
-gameVariables.lifeTag.style.font = "italic 25px impact"
-gameVariables.lifeTag.style.color = "white"
-gameVariables.lifeTag.style.textShadow = "3px 3px 2px red"
-
-// les tirs effectués
-gameVariables.tirTag.innerText = "Missiles : " + gameVariables.majTir;
-gameVariables.tirTag.style.position = "absolute";
-gameVariables.tirTag.style.top = "90px";
-gameVariables.tirTag.style.left = "10px"
-gameVariables.tirTag.style.font = "italic 25px impact"
-gameVariables.tirTag.style.color = "white"
-gameVariables.tirTag.style.textShadow = "1px 1px 1px orange"
-
-
-export const spawnMissile = () => {
-    gameVariables.majTir += 1;
-    gameVariables.tirTag.innerText = "Missiles : " + gameVariables.majTir;
+export const displayInterface = () => {
+  gameVariables.scoreTag.innerText = "Score  " + gameVariables.score;
+  gameVariables.lifeTag.innerText = "Lifes  " + gameVariables.lifes;
+  gameVariables.missileTag.innerText = "Missiles  " + gameVariables.updateShoot;
+  gameVariables.invaderTag.innerText = "Invaders  " + gameVariables.invader;
 };
 
-export const adStock = () => {
+export const updateInvaderNumber = (grid) => {
+    gameVariables.invader = grid.invaders.length;
+    gameVariables.invaderTag.innerText = "Invaders  " + gameVariables.invader;    
+};
+
+export const spawnMissile = () => {
+    gameVariables.updateShoot += 1;
+    gameVariables.missileTag.innerText = "Missiles  " + gameVariables.updateShoot;
+};
+
+export const addScore = () => {
     gameVariables.score += 1;
-    gameVariables.scoreTag.innerText = "Score : " + gameVariables.score 
+    gameVariables.scoreTag.innerText = "Score  " + gameVariables.score 
 };
 
 export const lostLife = () => {
-    gameVariables.lifes--;
-    gameVariables.lifeTag.innerText = "Vie : " + gameVariables.lifes;
-    if(gameVariables.lifes < 0 ){
-        alert('perdu');
-        init();
-    }
+    gameVariables.lifes -= 1;
+    gameVariables.lifeTag.innerText = "Lifes  " + gameVariables.lifes;
 };
+
+export const substractInvaders = () => {
+    gameVariables.invader -= 1;
+    gameVariables.invaderTag.innerText = "Invaders  " + gameVariables.invader;
+};
+
