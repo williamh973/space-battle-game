@@ -1,17 +1,25 @@
 export const gameVariables = {
-  frames : 0,
   missiles : [],
   alienMissiles : [], 
   grids : [],
   particules : [],
+  frames : 0,
   lifes : 3,
   level : 1,
-  scoreTag : document.getElementById('score'),
-  lifeTag : document.getElementById('life'),
-  missileTag : document.getElementById('shoot'),
-  invaderTag : document.getElementById('invaders'),
   invader : 0,
   score : 0,
   updateShoot : 1,
-  isGameOver : false
-}
+  isGameStarted : false,
+  isGameOver : false,
+  isCustomMenu : true,
+  isStartButton : false,
+  scoreTag : document.getElementById('score'),
+  levelTag : document.getElementById('level'),
+  lifeTag : document.getElementById('life'),
+  missileTag : document.getElementById('shoot'),
+  invaderTag : document.getElementById('invaders'),
+  containerStart : document.getElementById('container-start'),
+  startButton : document.getElementById('btn-start'),
+  customMenu : document.getElementById('custom-menu'),
+  hud : document.getElementById('hud')
+};
