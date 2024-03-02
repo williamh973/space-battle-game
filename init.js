@@ -4,6 +4,7 @@ import { Player } from "./spawn-controller/player/player-class.js";
 
 
 export const init = () => {
+    gameVariables.startButton.disabled = true;
     gameVariables.isCustomMenu = false;
     gameVariables.isStartButton = false;
     gameVariables.missiles = [];

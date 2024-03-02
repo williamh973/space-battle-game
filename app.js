@@ -1,4 +1,4 @@
-import { canvasParam } from "./canvasParam.js";
+import { canvasParam, selectedCanvasColor } from "./canvasParam.js";
 import { gameVariables } from "./gameVariables.js";
 import { checkAlienMissileOffscreenBottom, missilePlayerUpdate } from "./spawn-controller/missile/missile-update.js";
 import { particleUpdate } from "./spawn-controller/particle/particle-update.js";
@@ -7,11 +7,27 @@ import { playerMissileCollideInvaders } from "./spawn-controller/missile/player-
 import { updateInvaderNumber } from "./interface.js";
 import { checkIfGameOver } from "./game-over.js";
 
-
   
-  export const animate = () => {
-        canvasParam.c.clearRect( 0, 0, canvasParam.canvas.width, canvasParam.canvas.height);
-        requestAnimationFrame(animate);
+  export const animate = (selectedColor) => {
+      requestAnimationFrame(animate);
+
+      selectedCanvasColor(selectedColor);
+
+        canvasParam.c.fillStyle = selectedColor;
+        
+        canvasParam.c.clearRect(
+            0, 
+            0, 
+            canvasParam.canvas.width, 
+            canvasParam.canvas.height
+            );
+            
+        canvasParam.c.fillRect(
+            0,
+            0,
+            canvasParam.canvas.width,
+            canvasParam.canvas.height
+            );
 
         gameVariables.grids.forEach((grid, indexGrid) => {
             updateInvaderNumber(grid);

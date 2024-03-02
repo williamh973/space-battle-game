@@ -14,7 +14,7 @@
 
       <div id="menu-canvas-color">
         <p class="title-menu">Sky Color</p>
-        <select class="child-menu" id="color-int-snake">
+        <select class="child-menu" id="child-color-canvas-menu">
           <option value="any">Select</option>
           <option value="#29B6F6">Sky Blue</option>
           <option value="#000020">Night Blue</option>
@@ -24,7 +24,7 @@
 
       <div id="menu-player-color">
         <p class="title-menu">Player Spaceship</p>
-        <select class="child-menu">
+        <select class="child-menu" id="child-player-menu">
           <option value="any">Select</option>
           <option value="#29B6F6">Sky Blue</option>
           <option value="#000020">Night Blue</option>
@@ -34,13 +34,14 @@
 
       <div id="menu-alien-color">
         <p class="title-menu">Alien Spaceship</p>
-        <select class="child-menu">
+        <select class="child-menu" id="child-alien-menu">
           <option value="any">Select</option>
           <option value="#29B6F6">Sky Blue</option>
           <option value="#000020">Night Blue</option>
           <option value="black">Black</option>
         </select>
       </div>    
+
   </div>
 
     <div class="menu" id="hud">
@@ -51,9 +52,12 @@
       <p class="element-hud" id="invaders"></p>
     </div>
 
+    
     <div id="container-start">
       <button id="btn-start">Start</button>
     </div>
+
+
 
     <canvas id="canvas"></canvas>
 

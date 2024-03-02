@@ -1,6 +1,39 @@
 import { animate } from "./app.js";
+import { canvasPreview, playerPreview } from "./canvas-preview.js";
+import { selectedCanvasColor } from "./canvasParam.js";
 import { gameVariables } from "./gameVariables.js";
 import { init } from "./init.js";
+
+
+const disableStartButton = () => {
+    gameVariables.startButton.disabled = true;
+    gameVariables.startButton.style.backgroundColor = 'grey';
+    gameVariables.startButton.style.cursor = 'default';
+};
+
+
+const enableStartButton = () => {
+    gameVariables.startButton.disabled = false;
+    gameVariables.startButton.style.backgroundColor = 'rgba(0, 255, 26, 0.592)';
+    gameVariables.startButton.style.cursor = 'pointer';
+};
+
+const beforeStart = () => {
+    disableStartButton();
+};
+beforeStart();
+
+
+const readyToStart = () => {
+    if (
+        gameVariables.isColorCanvasSelected &&
+        gameVariables.isPlayerSpaceShipSelected &&
+        gameVariables.isAlienSpaceShipSelected
+        ) {
+        enableStartButton();
+    }
+};
+
 
 
 export const displayGameStat = () => {
@@ -11,12 +44,11 @@ export const displayGameStat = () => {
     gameVariables.levelTag.innerText = "Level  " + gameVariables.level;
 };
 
-
-export const startGame = () => {
-  if (!gameVariables.isGameStarted) {
-    displayGameStat();
-    init();
-    animate();
+export const startGame = (selectedColor) => {
+    if (!gameVariables.isGameStarted) {
+        displayGameStat();
+        init();
+        animate(selectedColor);
   }
   gameVariables.isGameStarted = true;
 };
@@ -52,4 +84,30 @@ export const substractInvaders = () => {
     gameVariables.invaderTag.innerText = "Invaders  " + gameVariables.invader;
 };
 
-gameVariables.startButton = document.addEventListener("click",  startGame);
+
+gameVariables.startButton.addEventListener("click", function() { 
+    const selectedColor = gameVariables.selectColorCanvas.value;
+    startGame(selectedColor);
+});
+
+
+  gameVariables.selectColorCanvas.addEventListener("change", function() {
+      const selectedColor = gameVariables.selectColorCanvas.value;
+      
+      selectedCanvasColor(selectedColor);
+      canvasPreview(selectedColor); 
+      gameVariables.isColorCanvasSelected = true;
+      readyToStart();
+  }); 
+
+  gameVariables.selectImagePlayer.addEventListener("change", function() {
+    playerPreview(); 
+    console.log("ok");
+    gameVariables.isPlayerSpaceShipSelected = true;
+      readyToStart();
+}); 
+
+gameVariables.selectImageAlien.addEventListener("change", function() {
+    gameVariables.isAlienSpaceShipSelected = true;
+      readyToStart();
+}); 

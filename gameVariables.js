@@ -13,6 +13,9 @@ export const gameVariables = {
   isGameOver : false,
   isCustomMenu : true,
   isStartButton : false,
+  isColorCanvasSelected : false,
+  isPlayerSpaceShipSelected : false,
+  isAlienSpaceShipSelected : false,
   scoreTag : document.getElementById('score'),
   levelTag : document.getElementById('level'),
   lifeTag : document.getElementById('life'),
@@ -21,5 +24,8 @@ export const gameVariables = {
   containerStart : document.getElementById('container-start'),
   startButton : document.getElementById('btn-start'),
   customMenu : document.getElementById('custom-menu'),
+  selectColorCanvas : document.getElementById('child-color-canvas-menu'),
+  selectImagePlayer : document.getElementById('child-player-menu'), 
+  selectImageAlien : document.getElementById('child-alien-menu'), 
   hud : document.getElementById('hud')
 };

@@ -2,12 +2,11 @@ import { canvasParam } from "../../canvasParam.js";
 import { gameVariables } from "../../gameVariables.js";
 import { keys } from "../../keywords.js";
 import { Missile } from "../missile/player-missile-class.js";
+import { createPlayerImage, thePlayerSpaceShip } from "./player-assets.js";
 
 export class Player{
     constructor() {
-        const image = new Image();
-        image.src = './assets/images/player-aircraft.png';
-        this.image = image;
+        this.image = createPlayerImage(thePlayerSpaceShip);
         this.width = 40; 
         this.height = 40; 
         this.position = {
