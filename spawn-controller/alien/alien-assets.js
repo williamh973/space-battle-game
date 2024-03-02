@@ -16,3 +16,13 @@ export function createAlienOrangeSpaceShip() {
     return image;
 }
 export const orangeAlienSpaceShip = createAlienOrangeSpaceShip('./assets/images/alien/alien-orange-spaceship.png');
+
+
+export function createAlienPurpleSpaceShip() {
+    const image = new Image();
+    image.src = './assets/images/alien/alien-purple-spaceship.png';
+    image.width = 32;
+    image.height = 32;
+    return image;
+}
+export const purpleAlienSpaceShip = createAlienPurpleSpaceShip('./assets/images/alien/alien-purple-spaceship.png');
