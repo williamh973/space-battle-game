@@ -1,5 +1,5 @@
 import { gameVariables } from "../../gameVariables.js";
-import { addScore, substractInvaders } from "../../interface.js";
+import { addScore, substractInvaders, updateLevelNumber } from "../../interface.js";
 import { Grid } from "../grid/grid-class.js";
 import { spawnParticles } from "../particle/particle-spawn.js";
 
@@ -36,6 +36,6 @@ const spawnNewGrid = (grid, indexGrid) => {
     if(grid.invaders.length === 0 && gameVariables.grids.length === 1) {
         gameVariables.grids.splice(indexGrid, 1);
         gameVariables.grids.push(new Grid());
-        gameVariables.level += 1;
+        updateLevelNumber();
     }
 };
