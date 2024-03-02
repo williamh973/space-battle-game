@@ -9,8 +9,8 @@ import { blueSpaceShip, createPlayerBlueSpaceShip, createPlayerWhiteSpaceShip, w
 
 export class Player{
     constructor() {
-        this.width = 40; 
-        this.height = 40; 
+        this.width = 32; 
+        this.height = 32; 
         this.position = {
             x: canvasParam.canvas.width / 2, 
             y: canvasParam.canvas.height - this.height

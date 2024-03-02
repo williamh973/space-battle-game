@@ -43,13 +43,13 @@ body{
   border: 1px solid rgb(84, 84, 84);
   margin: 5px;
 }
+.child-menu:hover {
+    cursor: pointer;  
+    border: 1px solid rgb(255, 22, 22);
+}
 
 #hud {
     display: none;    
-}
-
-#container-start {
-    /* border: 1px solid red; */
 }
 
 #btn-start {
