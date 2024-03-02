@@ -1,17 +1,69 @@
+import { animate } from "./app.js";
+import { canvasPreview } from "./canvas-preview.js";
+import { selectedCanvasColor } from "./canvasParam.js";
 import { gameVariables } from "./gameVariables.js";
+import { handleAlienSpaceshipSelect } from "./handle-spaceship-selection/alien-spaceship.js";
+import { handlePlayerSpaceshipSelect } from "./handle-spaceship-selection/player-spaceship.js";
 import { init } from "./init.js";
 
 
-export const displayInterface = () => {
-  gameVariables.scoreTag.innerText = "Score  " + gameVariables.score;
-  gameVariables.lifeTag.innerText = "Lifes  " + gameVariables.lifes;
-  gameVariables.missileTag.innerText = "Missiles  " + gameVariables.updateShoot;
-  gameVariables.invaderTag.innerText = "Invaders  " + gameVariables.invader;
+const disableStartButton = () => {
+    gameVariables.startButton.disabled = true;
+    gameVariables.startButton.style.backgroundColor = 'grey';
+    gameVariables.startButton.style.cursor = 'default';
 };
+
+
+const enableStartButton = () => {
+    gameVariables.startButton.disabled = false;
+    gameVariables.startButton.style.backgroundColor = 'rgba(0, 255, 26, 0.592)';
+    gameVariables.startButton.style.cursor = 'pointer';
+};
+
+const beforeStart = () => {
+    disableStartButton();
+};
+beforeStart();
+
+
+const readyToStart = () => {
+    if (
+        gameVariables.isColorCanvasSelected &&
+        gameVariables.isPlayerSpaceShipSelected &&
+        gameVariables.isAlienSpaceShipSelected
+        ) {
+        enableStartButton();
+    }
+};
+
+
+
+export const displayGameStat = () => {
+    gameVariables.scoreTag.innerText = "Score  " + gameVariables.score;
+    gameVariables.lifeTag.innerText = "Lifes  " + gameVariables.lifes;
+    gameVariables.missileTag.innerText = "Missiles  " + gameVariables.updateShoot;
+    gameVariables.invaderTag.innerText = "Invaders  " + gameVariables.invader;
+    gameVariables.levelTag.innerText = "Level  " + gameVariables.level;
+};
+
+export const startGame = (selectedColor) => {
+    if (!gameVariables.isGameStarted) {
+        displayGameStat();
+        init();
+        animate(selectedColor);
+  }
+  gameVariables.isGameStarted = true;
+};
+
 
 export const updateInvaderNumber = (grid) => {
     gameVariables.invader = grid.invaders.length;
     gameVariables.invaderTag.innerText = "Invaders  " + gameVariables.invader;    
+};
+
+export const updateLevelNumber = () => {
+    gameVariables.level += 1;
+    gameVariables.levelTag.innerText = "Level  " + gameVariables.level;
 };
 
 export const spawnMissile = () => {
@@ -33,4 +85,36 @@ export const substractInvaders = () => {
     gameVariables.invader -= 1;
     gameVariables.invaderTag.innerText = "Invaders  " + gameVariables.invader;
 };
+
+
+gameVariables.startButton.addEventListener("click", function() { 
+    const selectedColor = gameVariables.selectColorCanvas.value;
+    startGame(selectedColor);
+});
+
+
+  gameVariables.selectColorCanvas.addEventListener("change", function() {
+      const selectedColor = gameVariables.selectColorCanvas.value;
+      
+      selectedCanvasColor(selectedColor);
+      canvasPreview(selectedColor); 
+      gameVariables.isColorCanvasSelected = true;
+      readyToStart();
+  }); 
+
+  gameVariables.selectImagePlayer.addEventListener("change", function() {
+    const selectedSpaceship = gameVariables.selectImagePlayer.value;
+    handlePlayerSpaceshipSelect(selectedSpaceship);
+    gameVariables.isPlayerSpaceShipSelected = true;
+    readyToStart();
+}); 
+
+gameVariables.selectImageAlien.addEventListener("change", function() {
+    const selectedSpaceship = gameVariables.selectImageAlien.value;
+    handleAlienSpaceshipSelect(selectedSpaceship);
+    gameVariables.isAlienSpaceShipSelected = true;
+    readyToStart();
+}); 
+
+
 

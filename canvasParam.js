@@ -1,8 +1,13 @@
- export const canvasParam = {  
-    canvas : document.querySelector('#canvas'),
-    c : canvas.getContext('2d')
-  };
+export const canvasParam = {  
+   canvas : document.querySelector('#canvas'),
+   c : canvas.getContext('2d')
+};
   
+canvasParam.canvas.width = 800;
+canvasParam.canvas.height = 600;
 
-   canvasParam.canvas.width = 800;
-   canvasParam.canvas.height = 600;
+// console.log(canvasParam.c);
+
+export function selectedCanvasColor(selectedColor) {
+  canvasParam.c.fillStyle = selectedColor;
+};
