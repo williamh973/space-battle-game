@@ -1,44 +1,56 @@
-import { canvasParam } from "./canvasParam.js";
+import { canvasParam, selectedCanvasColor } from "./canvasParam.js";
 import { gameVariables } from "./gameVariables.js";
-import { init } from "./init.js";
 import { checkAlienMissileOffscreenBottom, missilePlayerUpdate } from "./spawn-controller/missile/missile-update.js";
 import { particleUpdate } from "./spawn-controller/particle/particle-update.js";
 import { alienMissileFireRate } from "./spawn-controller/missile/alien-missile-fire-rate.js";
 import { playerMissileCollideInvaders } from "./spawn-controller/missile/player-missile-collide.js";
-import { displayInterface, updateInvaderNumber } from "./interface.js";
+import { updateInvaderNumber } from "./interface.js";
 import { checkIfGameOver } from "./game-over.js";
 
+  
+  export const animate = (selectedColor) => {
+      requestAnimationFrame(animate);
 
+      selectedCanvasColor(selectedColor);
 
-init();
-displayInterface();
+        canvasParam.c.fillStyle = selectedColor;
+        
+        canvasParam.c.clearRect(
+            0, 
+            0, 
+            canvasParam.canvas.width, 
+            canvasParam.canvas.height
+            );
+            
+        canvasParam.c.fillRect(
+            0,
+            0,
+            canvasParam.canvas.width,
+            canvasParam.canvas.height
+            );
 
-const animate = () => {
-    canvasParam.c.clearRect( 0, 0, canvasParam.canvas.width, canvasParam.canvas.height);
-    requestAnimationFrame(animate);
+        gameVariables.grids.forEach((grid, indexGrid) => {
+            updateInvaderNumber(grid);
+            alienMissileFireRate(grid);
+            grid.update();
     
-    gameVariables.grids.forEach((grid, indexGrid) => {
-        updateInvaderNumber(grid);
-        alienMissileFireRate(grid);
-        grid.update();
-
-
-        grid.invaders.forEach((invader, indexI) => {
-            invader.update({
-                velocity : grid.velocity
-            });
-            checkIfGameOver(invader);
-            playerMissileCollideInvaders(grid, invader, indexGrid, indexI);
+    
+            grid.invaders.forEach((invader, indexI) => {
+                invader.update({
+                    velocity : grid.velocity
+                });
+                checkIfGameOver(invader);
+                playerMissileCollideInvaders(grid, invader, indexGrid, indexI);
+            })
         })
-    })
+        
+        particleUpdate();
+        missilePlayerUpdate();
+        checkAlienMissileOffscreenBottom();
+        
+        gameVariables.player.update();
+        gameVariables.frames++;
+    };
     
-    particleUpdate();
-    missilePlayerUpdate();
-    checkAlienMissileOffscreenBottom();
-    
-    gameVariables.player.update();
-    gameVariables.frames++;
-};
-animate();
 
 
