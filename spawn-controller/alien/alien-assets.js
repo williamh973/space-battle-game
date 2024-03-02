@@ -1,6 +1,6 @@
-export function createAlienImage() {
+export function createAlienRedSpaceShip() {
     const image = new Image();
-    image.src = './assets/images/alien/alien-aircraft.png';
+    image.src = './assets/images/alien/alien-red-spaceship.png';
     return image;
 }
-export const theAlienSpaceShip = createAlienImage('./assets/images/alien/alien-aircraft.png');
+export const redAlienSpaceShip = createAlienRedSpaceShip('./assets/images/alien/alien-red-spaceship.png');

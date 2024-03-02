@@ -1,6 +1,5 @@
 import { canvasParam, selectedCanvasColor } from "./canvasParam.js";
-import { gameVariables } from "./gameVariables.js";
-import { createPlayerImage, thePlayerSpaceShip } from "./spawn-controller/player/player-assets.js";
+
 
 
 export const canvasPreview = (selectedColor) => {
@@ -24,7 +23,3 @@ export const canvasPreview = (selectedColor) => {
         );
 };
 
-
-export const playerPreview = () => {
-    createPlayerImage(thePlayerSpaceShip);
-}

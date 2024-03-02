@@ -1,7 +1,9 @@
 import { animate } from "./app.js";
-import { canvasPreview, playerPreview } from "./canvas-preview.js";
+import { canvasPreview } from "./canvas-preview.js";
 import { selectedCanvasColor } from "./canvasParam.js";
 import { gameVariables } from "./gameVariables.js";
+import { handleAlienSpaceshipSelect } from "./handle-spaceship-selection/alien-spaceship.js";
+import { handlePlayerSpaceshipSelect } from "./handle-spaceship-selection/player-spaceship.js";
 import { init } from "./init.js";
 
 
@@ -101,13 +103,18 @@ gameVariables.startButton.addEventListener("click", function() {
   }); 
 
   gameVariables.selectImagePlayer.addEventListener("change", function() {
-    playerPreview(); 
-    console.log("ok");
+    const selectedSpaceship = gameVariables.selectImagePlayer.value;
+    handlePlayerSpaceshipSelect(selectedSpaceship);
     gameVariables.isPlayerSpaceShipSelected = true;
-      readyToStart();
+    readyToStart();
 }); 
 
 gameVariables.selectImageAlien.addEventListener("change", function() {
+    const selectedSpaceship = gameVariables.selectImageAlien.value;
+    handleAlienSpaceshipSelect(selectedSpaceship);
     gameVariables.isAlienSpaceShipSelected = true;
-      readyToStart();
+    readyToStart();
 }); 
+
+
+

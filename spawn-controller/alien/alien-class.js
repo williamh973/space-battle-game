@@ -1,7 +1,6 @@
 import { canvasParam } from "../../canvasParam.js";
 import { gameVariables } from "../../gameVariables.js";
 import { AlienMissile } from "../missile/alien-missile-class.js";
-import { createAlienImage, theAlienSpaceShip } from "./alien-assets.js";
 
 
 export class Alien{
@@ -14,7 +13,7 @@ export class Alien{
             x: 0, 
             y: 0 
         }
-        this.image = createAlienImage(theAlienSpaceShip);
+        this.image = gameVariables.alienSpaceshipName;
         this.width = 32;
         this.height = 32;
     }

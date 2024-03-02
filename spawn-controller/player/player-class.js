@@ -2,21 +2,24 @@ import { canvasParam } from "../../canvasParam.js";
 import { gameVariables } from "../../gameVariables.js";
 import { keys } from "../../keywords.js";
 import { Missile } from "../missile/player-missile-class.js";
-import { createPlayerImage, thePlayerSpaceShip } from "./player-assets.js";
+import { blueSpaceShip, createPlayerBlueSpaceShip, createPlayerWhiteSpaceShip, whiteSpaceShip } from "./player-assets.js";
+
+// createPlayerWhiteSpaceShip(whiteSpaceShip)
+// createPlayerBlueSpaceShip(blueSpaceShip)
 
 export class Player{
     constructor() {
-        this.image = createPlayerImage(thePlayerSpaceShip);
         this.width = 40; 
         this.height = 40; 
         this.position = {
             x: canvasParam.canvas.width / 2, 
             y: canvasParam.canvas.height - this.height
-        }
+        };
         this.velocity = {
             x: 0, 
             y: 0
-        }
+        };
+        this.image = gameVariables.spaceshipName;
     }
 
     draw(){

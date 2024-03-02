@@ -27,5 +27,9 @@ export const gameVariables = {
   selectColorCanvas : document.getElementById('child-color-canvas-menu'),
   selectImagePlayer : document.getElementById('child-player-menu'), 
   selectImageAlien : document.getElementById('child-alien-menu'), 
-  hud : document.getElementById('hud')
+  hud : document.getElementById('hud'),
+  playerSpaceShipPreview : document.getElementById('player-spaceship-preview'),
+  alienSpaceShipPreview : document.getElementById('alien-spaceship-preview'),
 };
+
+
