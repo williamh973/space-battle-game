@@ -1,9 +1,10 @@
 import { canvasParam } from "../../canvasParam.js";
 import { gameVariables } from "../../gameVariables.js";
+import { bossGalacticPhoenixSpaceShip, createBossGalacticPhoenixSpaceShip } from "../alien/alien-assets.js";
 import { AlienMissile } from "../missile/alien-missile-class.js";
 
 
-export class Alien{
+export class Boss{
     constructor({position}) {
         this.position = {
             x: position.x + 2,
@@ -13,9 +14,11 @@ export class Alien{
             x: 0, 
             y: 0 
         }
-        this.image = gameVariables.alienSpaceshipName;
-        this.width = 35;
-        this.height = 35;
+        this.image = createBossGalacticPhoenixSpaceShip(bossGalacticPhoenixSpaceShip);
+        this.width = 70;
+        this.height = 100;
+        this.scale = 1;
+        this.life = 200;
     }
 
     draw(){
@@ -24,8 +27,8 @@ export class Alien{
                 this.image,
                 this.position.x,
                 this.position.y,
-                this.width,
-                this.height,
+                this.width * this.scale,
+                this.height * this.scale,
             );       
         }
     }

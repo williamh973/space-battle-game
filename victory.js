@@ -2,29 +2,23 @@ import { canvasParam } from "./canvasParam.js";
 import { gameVariables } from "./gameVariables.js";
 
 
-export const drawTextGameOver = () => {
+export const drawTextVictory = () => {
     canvasParam.c.font = '50px Arial';
     canvasParam.c.fillStyle = 'black';
     canvasParam.c.strokeStyle = 'white';
-    canvasParam.c.lineWidth = 3; 
+    canvasParam.c.lineWidth = 2; 
     canvasParam.c.textAlign = 'center';
     canvasParam.c.textBaseline = 'middle';
-    const text = 'GAME OVER';
+    const text = 'YOU WIN';
     const x = canvasParam.canvas.width / 2;
     const y = canvasParam.canvas.height / 2;
     canvasParam.c.strokeText(text, x, y);
     canvasParam.c.fillText(text, x, y);
+    console.log("text", text);
 };
 
 
-export const checkIfGameOver = (invader) => {
-    const invadersOffScreenOnBelow = invader.position.y + invader.height >= canvasParam.canvas.height;
-    const playerLifeEqualToZero = gameVariables.lifes === 0;
-
-  if (invadersOffScreenOnBelow || playerLifeEqualToZero) {
-    return (
-        gameVariables.isGameOver = true,
-        drawTextGameOver()
-        )
-  }
+export const checkIfPlayerWin = () => {
+        gameVariables.isPlayerWin = true;
+        drawTextVictory();
 };

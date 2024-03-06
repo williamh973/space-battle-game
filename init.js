@@ -1,24 +1,28 @@
 import { gameVariables } from "./gameVariables.js";
-import { Grid } from "./spawn-controller/grid/grid-class.js";
+import { GridBoss } from "./spawn-controller/grid/grid-boss-class.js";
+import { Grid } from "./spawn-controller/grid/grid-invaders-class.js";
 import { Player } from "./spawn-controller/player/player-class.js";
 
 
 export const init = () => {
-    gameVariables.startButton.disabled = true;
-    gameVariables.isCustomMenu = false;
-    gameVariables.isStartButton = false;
     gameVariables.missiles = [];
     gameVariables.alienMissiles = []; 
     gameVariables.particules = [];
     gameVariables.lifes = 3;
     gameVariables.level = 1;
-    gameVariables.scoreTag = document.getElementById('score');
-    gameVariables.lifeTag = document.getElementById('life');
-    gameVariables.missileTag = document.getElementById('shoot');
     gameVariables.score = 0;
-    gameVariables.updateShoot = 1;
+    gameVariables.missileShooted = 0;
+    gameVariables.invader = 0;
+    gameVariables.isGameStarted = true;
+    gameVariables.startButton.disabled = true;
+    gameVariables.isGameOver = false;
+    gameVariables.isPlayerWin = false;
+    gameVariables.isStartButton = false;
+    gameVariables.isBossLevel = false;
+    gameVariables.isBossDead = false;
     gameVariables.player = new Player(); 
     gameVariables.grids = [new Grid()];
+    gameVariables.gridsBoss = [new GridBoss()];
     gameVariables.containerStart.style.display = "none";
     gameVariables.customMenu.style.display = 'none';
     gameVariables.hud.style.display = "flex";

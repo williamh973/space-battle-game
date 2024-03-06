@@ -1,5 +1,5 @@
 import { gameVariables } from "../../gameVariables.js";
-import { lostLife } from "../../interface.js";
+import { substractPlayerLife } from "../../interface.js";
 import { Particule } from "../particle/particle-class.js";
 
 export const alienMissileCollidePlayer = (alienMissile, player, index) => {
@@ -24,6 +24,6 @@ export const alienMissileCollidePlayer = (alienMissile, player, index) => {
                     color:'white'
                 }))
             }
-            lostLife(); 
+            substractPlayerLife(); 
         }
 }

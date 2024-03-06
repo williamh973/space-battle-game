@@ -2,15 +2,12 @@ import { canvasParam } from "../../canvasParam.js";
 import { gameVariables } from "../../gameVariables.js";
 import { keys } from "../../keywords.js";
 import { Missile } from "../missile/player-missile-class.js";
-import { blueSpaceShip, createPlayerBlueSpaceShip, createPlayerWhiteSpaceShip, whiteSpaceShip } from "./player-assets.js";
 
-// createPlayerWhiteSpaceShip(whiteSpaceShip)
-// createPlayerBlueSpaceShip(blueSpaceShip)
 
 export class Player{
     constructor() {
-        this.width = 32; 
-        this.height = 32; 
+        this.width = 35; 
+        this.height = 35; 
         this.position = {
             x: canvasParam.canvas.width / 2, 
             y: canvasParam.canvas.height - this.height
@@ -23,7 +20,7 @@ export class Player{
     }
 
     draw(){
-        if(this.image && !gameVariables.isGameOver) {
+        if(this.image && !gameVariables.isGameOver && !gameVariables.isPlayerWin) {
             canvasParam.c.drawImage(
                 this.image,
                 this.position.x,
@@ -35,7 +32,7 @@ export class Player{
     }
 
     shoot(){
-        if (!gameVariables.isGameOver) {   
+        if (!gameVariables.isGameOver && !gameVariables.isPlayerWin) {   
             gameVariables.missiles.push(new Missile({
                 position:{
                     x: this.position.x + this.width/2,

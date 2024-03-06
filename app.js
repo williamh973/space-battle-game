@@ -6,6 +6,7 @@ import { alienMissileFireRate } from "./spawn-controller/missile/alien-missile-f
 import { playerMissileCollideInvaders } from "./spawn-controller/missile/player-missile-collide.js";
 import { updateInvaderNumber } from "./interface.js";
 import { checkIfGameOver } from "./game-over.js";
+import { checkIfPlayerWin } from "./victory.js";
 
   
   export const animate = (selectedColor) => {
@@ -14,14 +15,16 @@ import { checkIfGameOver } from "./game-over.js";
       selectedCanvasColor(selectedColor);
 
         canvasParam.c.fillStyle = selectedColor;
-        
-        canvasParam.c.clearRect(
-            0, 
-            0, 
-            canvasParam.canvas.width, 
-            canvasParam.canvas.height
-            );
-            
+
+        if (!gameVariables.isEndGame) {
+            canvasParam.c.clearRect(
+                0, 
+                0, 
+                canvasParam.canvas.width, 
+                canvasParam.canvas.height,
+                );
+        }
+           
         canvasParam.c.fillRect(
             0,
             0,
@@ -33,20 +36,25 @@ import { checkIfGameOver } from "./game-over.js";
             updateInvaderNumber(grid);
             alienMissileFireRate(grid);
             grid.update();
-    
-    
+            grid.drawDebugCollisionSquare();
+
             grid.invaders.forEach((invader, indexI) => {
                 invader.update({
                     velocity : grid.velocity
                 });
                 checkIfGameOver(invader);
                 playerMissileCollideInvaders(grid, invader, indexGrid, indexI);
-            })
-        })
-        
+            });
+
+        });
+
         particleUpdate();
         missilePlayerUpdate();
         checkAlienMissileOffscreenBottom();
+
+        if (gameVariables.isEndGame) {
+          checkIfPlayerWin();  
+        }
         
         gameVariables.player.update();
         gameVariables.frames++;

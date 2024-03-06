@@ -26,3 +26,21 @@ export function createAlienPurpleSpaceShip() {
     return image;
 }
 export const purpleAlienSpaceShip = createAlienPurpleSpaceShip('./assets/images/alien/alien-purple-spaceship.png');
+
+
+export function createAlienStarfireSentinelSpaceShip() {
+    const image = new Image();
+    image.src = './assets/images/alien/starfire-sentinel.png';
+    image.width = 32;
+    image.height = 32;
+    return image;
+}
+export const starfireSentinelAlienSpaceShip = createAlienStarfireSentinelSpaceShip('./assets/images/alien/starfire-sentinel.png');
+
+
+export function createBossGalacticPhoenixSpaceShip() {
+    const image = new Image();
+    image.src = './assets/images/alien/galactic-phoenix.png';
+    return image;
+}
+export const bossGalacticPhoenixSpaceShip = createBossGalacticPhoenixSpaceShip('./assets/images/alien/galactic-phoenix.png');

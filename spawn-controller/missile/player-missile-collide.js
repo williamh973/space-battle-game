@@ -1,12 +1,14 @@
 import { gameVariables } from "../../gameVariables.js";
-import { addScore, substractInvaders, updateLevelNumber } from "../../interface.js";
-import { Grid } from "../grid/grid-class.js";
+import { addScore, substractBossLife, substractInvaders, updateLevelNumber } from "../../interface.js";
+import { checkIfBossKo } from "../boss/boss-dead.js";
+import { spawnBossGrid, spawnNewGrid } from "../grid/spawn-grid.js";
 import { spawnParticles } from "../particle/particle-spawn.js";
 
 
 
 export const playerMissileCollideInvaders = (
     grid, 
+    gridBoss,
     invader, 
     indexGrid, 
     indexI
@@ -18,24 +20,27 @@ export const playerMissileCollideInvaders = (
          missile.position.x + missile.width >= invader.position.x &&
          missile.position.x - missile.width <= invader.position.x + invader.width
          ) {
-          spawnParticles(invader);
-          addScore();
-          substractInvaders();
-    
-          setTimeout(() => {
-              grid.invaders.splice(indexI, 1);
-              gameVariables.missiles.splice(indexM, 1)
-              spawnNewGrid(grid, indexGrid);
+             spawnParticles(invader);
+             gameVariables.missiles.splice(indexM, 1);
+
+             if (!gameVariables.isBossLevel) {
+                    grid.invaders.splice(indexI, 1);
+                    addScore();
+                    substractInvaders();
+                    updateLevelNumber(grid);
+                } else {
+                    substractBossLife(invader); 
+                    checkIfBossKo(invader, grid, indexGrid, indexI);
+                }
+             
+             
+             setTimeout(() => {
+                    if (gameVariables.level <= 1) {
+                        spawnNewGrid(grid, indexGrid);
+                    } else {
+                        spawnBossGrid(gridBoss, indexGrid);
+                    }
           },0)
       }
   })
-};
-
-
-const spawnNewGrid = (grid, indexGrid) => {
-    if(grid.invaders.length === 0 && gameVariables.grids.length === 1) {
-        gameVariables.grids.splice(indexGrid, 1);
-        gameVariables.grids.push(new Grid());
-        updateLevelNumber();
-    }
 };

@@ -1,6 +1,7 @@
 import { canvasParam } from "../../canvasParam.js";
 import { gameVariables } from "../../gameVariables.js";
 import { Alien } from "../alien/alien-class.js";
+import { Boss } from "../boss/boss-class.js";
 
 export class Grid{
     constructor() {
@@ -18,18 +19,38 @@ export class Grid{
         this.scale = 35;
         this.width = this.colums * this.scale;
         this.height = this.rows * this.scale;
+        
         this.draw();
+        this.boss();
     }
 
-    draw() {    
-        for (let x = 0; x < this.colums; x++) {
-            for(let y = 0; y < this.rows; y++) {
-                this.invaders.push(new Alien({
-                    position:{
-                        x : x * this.scale,
-                        y : y * this.scale
-                    }
-                }))
+    draw() {
+        if (gameVariables.level <= 1) {    
+            for (let x = 0; x < this.colums; x++) {
+                for(let y = 0; y < this.rows; y++) {
+                    this.invaders.push(new Alien({
+                        position:{
+                            x : x * this.scale,
+                            y : y * this.scale
+                        }
+                    }))
+                }
+            }
+        }    
+    }
+
+    boss() {    
+        
+        if (gameVariables.level === 50) {
+            for (let x = 0; x < 1; x++) {
+                for (let y = 0; y < 1; y++) {
+                    this.invaders.push(new Boss({
+                        position:{
+                            x : x,
+                            y : y
+                        }
+                    }))
+                }
             }
         }
     }

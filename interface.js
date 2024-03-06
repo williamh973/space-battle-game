@@ -41,7 +41,7 @@ const readyToStart = () => {
 export const displayGameStat = () => {
     gameVariables.scoreTag.innerText = "Score  " + gameVariables.score;
     gameVariables.lifeTag.innerText = "Lifes  " + gameVariables.lifes;
-    gameVariables.missileTag.innerText = "Missiles  " + gameVariables.updateShoot;
+    gameVariables.missileTag.innerText = "Missiles  " + gameVariables.missileShooted;
     gameVariables.invaderTag.innerText = "Invaders  " + gameVariables.invader;
     gameVariables.levelTag.innerText = "Level  " + gameVariables.level;
 };
@@ -52,7 +52,6 @@ export const startGame = (selectedColor) => {
         init();
         animate(selectedColor);
   }
-  gameVariables.isGameStarted = true;
 };
 
 
@@ -61,14 +60,16 @@ export const updateInvaderNumber = (grid) => {
     gameVariables.invaderTag.innerText = "Invaders  " + gameVariables.invader;    
 };
 
-export const updateLevelNumber = () => {
-    gameVariables.level += 1;
-    gameVariables.levelTag.innerText = "Level  " + gameVariables.level;
+export const updateLevelNumber = (grid) => {
+    if(grid.invaders.length === 0 && gameVariables.grids.length === 1) {
+       gameVariables.level += 1;
+       gameVariables.levelTag.innerText = "Level  " + gameVariables.level;
+    };
 };
 
 export const spawnMissile = () => {
-    gameVariables.updateShoot += 1;
-    gameVariables.missileTag.innerText = "Missiles  " + gameVariables.updateShoot;
+    gameVariables.missileShooted += 1;
+    gameVariables.missileTag.innerText = "Missiles  " + gameVariables.missileShooted;
 };
 
 export const addScore = () => {
@@ -76,9 +77,13 @@ export const addScore = () => {
     gameVariables.scoreTag.innerText = "Score  " + gameVariables.score 
 };
 
-export const lostLife = () => {
+export const substractPlayerLife = () => {
     gameVariables.lifes -= 1;
     gameVariables.lifeTag.innerText = "Lifes  " + gameVariables.lifes;
+};
+
+export const substractBossLife = (invader) => {
+    invader.life -= 1;
 };
 
 export const substractInvaders = () => {
