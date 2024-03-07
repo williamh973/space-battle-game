@@ -5,6 +5,7 @@ import { Player } from "./spawn-controller/player/player-class.js";
 
 
 export const init = () => {
+    gameVariables.isStarInitalized = false;
     gameVariables.missiles = [];
     gameVariables.alienMissiles = []; 
     gameVariables.particules = [];

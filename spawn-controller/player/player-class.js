@@ -45,14 +45,14 @@ export class Player{
    update(){
        if(this.image){
            if (
-            (keys.ArrowLeft.pressed && this.position.x >= 0) ||
-            (keys.q.pressed && this.position.x >= 0) 
+            (keys.ArrowLeft.pressed && this.position.x >= 10) ||
+            (keys.q.pressed && this.position.x >= 10) 
             ){
                this.velocity.x = -5;
 
             } else if (
-                (keys.ArrowRight.pressed && this.position.x <= canvasParam.canvas.width - this.width) || 
-                (keys.d.pressed && this.position.x <= canvasParam.canvas.width - this.width)
+                (keys.ArrowRight.pressed && this.position.x <= canvasParam.canvas.width - this.width - 10) || 
+                (keys.d.pressed && this.position.x <= canvasParam.canvas.width - this.width - 10)
                 ){
                 this.velocity.x = 5;
             } else{

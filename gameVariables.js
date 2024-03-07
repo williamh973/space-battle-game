@@ -10,6 +10,7 @@ export const gameVariables = {
   invader : 0,
   score : 0,
   missileShooted : 0,
+  isStarInitalized : false,
   isGameStarted : false,
   isGameOver : false, 
   isPlayerWin : false,

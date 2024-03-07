@@ -7,7 +7,9 @@ import { playerMissileCollideInvaders } from "./spawn-controller/missile/player-
 import { updateInvaderNumber } from "./interface.js";
 import { checkIfGameOver } from "./game-over.js";
 import { checkIfPlayerWin } from "./victory.js";
+import { drawStars } from "./spawn-controller/stars/stars.js";
 
+// drawStars();
   
   export const animate = (selectedColor) => {
       requestAnimationFrame(animate);
@@ -29,37 +31,40 @@ import { checkIfPlayerWin } from "./victory.js";
             0,
             0,
             canvasParam.canvas.width,
-            canvasParam.canvas.height
+            canvasParam.canvas.height,
             );
-
-        gameVariables.grids.forEach((grid, indexGrid) => {
-            updateInvaderNumber(grid);
-            alienMissileFireRate(grid);
-            grid.update();
-            // grid.drawDebugCollisionSquare();
-
-            grid.invaders.forEach((invader, indexI) => {
-                invader.update({
-                    velocity : grid.velocity
+            
+            drawStars();
+            
+            gameVariables.grids.forEach((grid, indexGrid) => {
+                updateInvaderNumber(grid);
+                alienMissileFireRate(grid);
+                grid.update();
+                
+                grid.invaders.forEach((invader, indexI) => {
+                    invader.update({
+                        velocity : grid.velocity
+                    });
+                    checkIfGameOver(invader);
+                    playerMissileCollideInvaders(grid, invader, indexGrid, indexI);
                 });
-                checkIfGameOver(invader);
-                playerMissileCollideInvaders(grid, invader, indexGrid, indexI);
+                
             });
+            
+            particleUpdate();
+            missilePlayerUpdate();
+            checkAlienMissileOffscreenBottom();
+            
+            if (gameVariables.isEndGame) {
+                checkIfPlayerWin();  
+            }
 
-        });
-
-        particleUpdate();
-        missilePlayerUpdate();
-        checkAlienMissileOffscreenBottom();
-
-        if (gameVariables.isEndGame) {
-          checkIfPlayerWin();  
-        }
-        
+            
         gameVariables.player.update();
-        gameVariables.player.drawDebugCollisionSquare();
+        // gameVariables.player.drawDebugCollisionSquare();
         gameVariables.frames++;
     };
     
-
-
+    
+    
+    
