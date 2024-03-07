@@ -1,11 +1,9 @@
 import { gameVariables } from "./gameVariables.js";
-// import { GridBoss } from "./spawn-controller/grid/grid-boss-class.js";
 import { Grid } from "./spawn-controller/grid/grid-invaders-class.js";
 import { Player } from "./spawn-controller/player/player-class.js";
 
 
 export const init = () => {
-    gameVariables.isStarInitalized = false;
     gameVariables.missiles = [];
     gameVariables.alienMissiles = []; 
     gameVariables.particules = [];
@@ -23,7 +21,6 @@ export const init = () => {
     gameVariables.isBossDead = false;
     gameVariables.player = new Player(); 
     gameVariables.grids = [new Grid()];
-    // gameVariables.gridsBoss = [new GridBoss()];
     gameVariables.containerStart.style.display = "none";
     gameVariables.customMenu.style.display = 'none';
     gameVariables.hud.style.display = "flex";

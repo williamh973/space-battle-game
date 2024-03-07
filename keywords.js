@@ -37,7 +37,7 @@ window.addEventListener('keydown',(event)=>{
         break;
         case ' ':
             if (event.repeat) {
-                // return
+                return
             }
             gameVariables.player.shoot();
             spawnMissile();

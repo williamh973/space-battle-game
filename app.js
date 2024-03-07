@@ -7,13 +7,13 @@ import { playerMissileCollideInvaders } from "./spawn-controller/missile/player-
 import { updateInvaderNumber } from "./interface.js";
 import { checkIfGameOver } from "./game-over.js";
 import { checkIfPlayerWin } from "./victory.js";
-import { drawStars } from "./spawn-controller/stars/stars.js";
+import { drawStars } from "./spawn-controller/stars/stars-manager.js";
 
-// drawStars();
+
   
   export const animate = (selectedColor) => {
       requestAnimationFrame(animate);
-
+      
       selectedCanvasColor(selectedColor);
 
         canvasParam.c.fillStyle = selectedColor;
@@ -33,9 +33,9 @@ import { drawStars } from "./spawn-controller/stars/stars.js";
             canvasParam.canvas.width,
             canvasParam.canvas.height,
             );
-            
+        
             drawStars();
-            
+
             gameVariables.grids.forEach((grid, indexGrid) => {
                 updateInvaderNumber(grid);
                 alienMissileFireRate(grid);

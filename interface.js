@@ -5,6 +5,7 @@ import { gameVariables } from "./gameVariables.js";
 import { handleAlienSpaceshipSelect } from "./handle-spaceship-selection/alien-spaceship.js";
 import { handlePlayerSpaceshipSelect } from "./handle-spaceship-selection/player-spaceship.js";
 import { init } from "./init.js";
+import { selectedStarColor } from "./spawn-controller/stars/stars-manager.js";
 
 
 const disableStartButton = () => {
@@ -100,8 +101,9 @@ gameVariables.startButton.addEventListener("click", function() {
 
   gameVariables.selectColorCanvas.addEventListener("change", function() {
       const selectedColor = gameVariables.selectColorCanvas.value;
-      
+      const starColor = gameVariables.starColor;
       selectedCanvasColor(selectedColor);
+      selectedStarColor(selectedColor, starColor);
       canvasPreview(selectedColor); 
       gameVariables.isColorCanvasSelected = true;
       readyToStart();
@@ -112,14 +114,14 @@ gameVariables.startButton.addEventListener("click", function() {
     handlePlayerSpaceshipSelect(selectedSpaceship);
     gameVariables.isPlayerSpaceShipSelected = true;
     readyToStart();
-}); 
+  }); 
 
-gameVariables.selectImageAlien.addEventListener("change", function() {
-    const selectedSpaceship = gameVariables.selectImageAlien.value;
-    handleAlienSpaceshipSelect(selectedSpaceship);
-    gameVariables.isAlienSpaceShipSelected = true;
-    readyToStart();
-}); 
+  gameVariables.selectImageAlien.addEventListener("change", function() {
+      const selectedSpaceship = gameVariables.selectImageAlien.value;
+      handleAlienSpaceshipSelect(selectedSpaceship);
+      gameVariables.isAlienSpaceShipSelected = true;
+      readyToStart();
+  }); 
 
 
 
