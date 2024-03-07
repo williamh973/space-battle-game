@@ -19,7 +19,7 @@ export const drawTextGameOver = () => {
 
 export const checkIfGameOver = (invader) => {
     const invadersOffScreenOnBelow = invader.position.y + invader.height >= canvasParam.canvas.height;
-    const playerLifeEqualToZero = gameVariables.lifes === 0;
+    const playerLifeEqualToZero = gameVariables.lifes <= 0;
 
   if (invadersOffScreenOnBelow || playerLifeEqualToZero) {
     return (

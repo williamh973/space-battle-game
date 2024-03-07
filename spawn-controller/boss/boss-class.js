@@ -43,16 +43,34 @@ export class Boss{
     
     shoot() {
         if(this.position && !gameVariables.isGameOver) {
-            gameVariables.alienMissiles.push(new AlienMissile({
-                position:{
-                    x: this.position.x + this.width / 2,
-                    y: this.position.y + this.height
-                },
-                velocity: {
-                    x: 0,
-                    y: 3
-                }
-            }))
+            gameVariables.alienMissiles.push(
+                new AlienMissile({
+                    position:{
+                        x : this.position.x + this.width / 2 - 10,
+                        y : this.position.y + this.height - 7
+                    },
+                    velocity: {
+                        x : 0,
+                        y : 20
+                    },
+                    width : 3,
+                    height : 15,
+                    color : "yellow"
+                }),
+                new AlienMissile({
+                    position:{
+                        x : this.position.x + this.width / 2 + 10,
+                        y : this.position.y + this.height - 7
+                    },
+                    velocity: {
+                        x : 0,
+                        y : 20
+                    },
+                    width : 3,
+                    height : 15,
+                    color : "yellow"
+                })
+            )
         }
     }
 

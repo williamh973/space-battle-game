@@ -1,5 +1,5 @@
 import { gameVariables } from "../../gameVariables.js";
-import { GridBoss } from "./grid-boss-class.js";
+// import { GridBoss } from "./grid-boss-class.js";
 import { Grid } from "./grid-invaders-class.js";
 
 
@@ -10,15 +10,15 @@ export const spawnNewGrid = (grid, indexGrid) => {
     }
 };
            
-export const spawnBossGrid = (gridBoss, indexGrid) => {
-    if(gridBoss.invaders.length === 0 && gameVariables.gridsBoss.length === 1) {
+export const spawnBossGrid = (grid, indexGrid) => {
+    if(grid.invaders.length === 0 && gameVariables.grids.length === 1) {
       
       setTimeout(() => {
         gameVariables.isBossLevel = true;
-        gameVariables.gridsBoss.splice(indexGrid, 1);
-        gameVariables.gridsBoss.push(new GridBoss());  
+        gameVariables.grids.splice(indexGrid, 1);
+        gameVariables.grids.push(new Grid());  
         // gridBoss.invaders.drawDebugCollisionSquare();
-        console.log(gameVariables.gridsBoss)
+        console.log("gameVariables.grids", gameVariables.grids, "grid", grid)
       }, 3000);
     }
 };

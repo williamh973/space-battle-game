@@ -48,7 +48,10 @@ export class Alien{
                 velocity: {
                     x: 0,
                     y: 3
-                }
+                },
+                width : 3,
+                height : 15,
+                color : "orange"
             }))
         }
     }

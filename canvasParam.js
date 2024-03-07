@@ -3,11 +3,10 @@ export const canvasParam = {
    c : canvas.getContext('2d')
 };
   
-canvasParam.canvas.width = 800;
-canvasParam.canvas.height = 600;
-
-// console.log(canvasParam.c);
-
 export function selectedCanvasColor(selectedColor) {
   canvasParam.c.fillStyle = selectedColor;
 };
+
+
+canvasParam.canvas.width = 800;
+canvasParam.canvas.height = 600;

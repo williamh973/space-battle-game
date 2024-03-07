@@ -8,7 +8,6 @@ import { spawnParticles } from "../particle/particle-spawn.js";
 
 export const playerMissileCollideInvaders = (
     grid, 
-    gridBoss,
     invader, 
     indexGrid, 
     indexI
@@ -35,10 +34,10 @@ export const playerMissileCollideInvaders = (
              
              
              setTimeout(() => {
-                    if (gameVariables.level <= 1) {
+                    if (gameVariables.level <= 49) {
                         spawnNewGrid(grid, indexGrid);
                     } else {
-                        spawnBossGrid(gridBoss, indexGrid);
+                        spawnBossGrid(grid, indexGrid);
                     }
           },0)
       }

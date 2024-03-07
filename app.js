@@ -36,7 +36,7 @@ import { checkIfPlayerWin } from "./victory.js";
             updateInvaderNumber(grid);
             alienMissileFireRate(grid);
             grid.update();
-            grid.drawDebugCollisionSquare();
+            // grid.drawDebugCollisionSquare();
 
             grid.invaders.forEach((invader, indexI) => {
                 invader.update({
@@ -57,6 +57,7 @@ import { checkIfPlayerWin } from "./victory.js";
         }
         
         gameVariables.player.update();
+        gameVariables.player.drawDebugCollisionSquare();
         gameVariables.frames++;
     };
     
