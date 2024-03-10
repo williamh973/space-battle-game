@@ -1,4 +1,4 @@
-import { gameVariables } from "../../gameVariables.js";
+import { gameVariables } from "../../game-variables.js";
 import { addScore, substractBossLife, substractInvaders, updateLevelNumber } from "../../interface.js";
 import { checkIfBossKo } from "../boss/boss-dead.js";
 import { spawnBossGrid, spawnNewGrid } from "../grid/spawn-grid.js";

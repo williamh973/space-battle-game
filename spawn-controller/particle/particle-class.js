@@ -1,4 +1,4 @@
-import { canvasParam } from "../../canvasParam.js"
+import { canvasParam } from "../../canvas-parameters.js"
 
 export class Particule{
     constructor({position, velocity, radius, color}){

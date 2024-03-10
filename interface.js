@@ -1,11 +1,12 @@
-import { animate } from "./app.js";
+import { animate } from "./animate.js";
 import { canvasPreview } from "./canvas-preview.js";
-import { selectedCanvasColor } from "./canvasParam.js";
-import { gameVariables } from "./gameVariables.js";
+import { selectedCanvasColor } from "./canvas-parameters.js";
+import { gameVariables } from "./game-variables.js";
 import { handleAlienSpaceshipSelect } from "./handle-spaceship-selection/alien-spaceship.js";
 import { handlePlayerSpaceshipSelect } from "./handle-spaceship-selection/player-spaceship.js";
 import { init } from "./init.js";
 import { selectedStarColor } from "./spawn-controller/stars/stars-manager.js";
+import { startAutoShootIfModActived } from "./auto-shoot.js";
 
 
 const disableStartButton = () => {
@@ -19,6 +20,16 @@ const enableStartButton = () => {
     gameVariables.startButton.disabled = false;
     gameVariables.startButton.style.backgroundColor = 'rgba(0, 255, 26, 0.592)';
     gameVariables.startButton.style.cursor = 'pointer';
+};
+
+const toggleAutoShootButton = () => {
+    if (gameVariables.isAutomaticalShootMod) {   
+        gameVariables.autoShootButton.style.backgroundColor = 'rgba(0, 255, 26, 0.592)';
+        gameVariables.autoShootButton.style.border = 'none';
+    } else {
+        gameVariables.autoShootButton.style.backgroundColor = 'transparent';
+        gameVariables.autoShootButton.style.border = '1px solid white';
+    }
 };
 
 const beforeStart = () => {
@@ -52,6 +63,7 @@ export const startGame = (selectedColor) => {
         displayGameStat();
         init();
         animate(selectedColor);
+        startAutoShootIfModActived();
   }
 };
 
@@ -68,7 +80,7 @@ export const updateLevelNumber = (grid) => {
     };
 };
 
-export const spawnMissile = () => {
+export const increaseHudMissileShooted = () => {
     gameVariables.missileShooted += 1;
     gameVariables.missileTag.innerText = "Missiles  " + gameVariables.missileShooted;
 };
@@ -96,6 +108,12 @@ export const substractInvaders = () => {
 gameVariables.startButton.addEventListener("click", function() { 
     const selectedColor = gameVariables.selectColorCanvas.value;
     startGame(selectedColor);
+});
+
+
+gameVariables.autoShootButton.addEventListener("click", function() {
+    gameVariables.isAutomaticalShootMod = !gameVariables.isAutomaticalShootMod;
+    toggleAutoShootButton(); 
 });
 
 

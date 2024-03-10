@@ -1,4 +1,4 @@
-import { gameVariables } from "../gameVariables.js";
+import { gameVariables } from "../game-variables.js";
 import { createAlienOrangeSpaceShip, createAlienPurpleSpaceShip, createAlienRedSpaceShip, createAlienStarfireSentinelSpaceShip, orangeAlienSpaceShip, purpleAlienSpaceShip, redAlienSpaceShip, starfireSentinelAlienSpaceShip } from "../spawn-controller/alien/alien-assets.js";
 
 

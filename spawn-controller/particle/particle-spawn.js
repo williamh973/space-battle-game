@@ -1,4 +1,4 @@
-import { gameVariables } from "../../gameVariables.js"
+import { gameVariables } from "../../game-variables.js"
 import { Particule } from "./particle-class.js"
 
 export const spawnParticles = (invader) => {

@@ -1,4 +1,4 @@
-import { gameVariables } from "../../gameVariables.js";
+import { gameVariables } from "../../game-variables.js";
 import { addScore, substractInvaders } from "../../interface.js";
 
 export const checkIfBossKo = (invader, grid, indexGrid, indexI) => {

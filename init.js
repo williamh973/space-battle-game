@@ -1,4 +1,4 @@
-import { gameVariables } from "./gameVariables.js";
+import { gameVariables } from "./game-variables.js";
 import { Grid } from "./spawn-controller/grid/grid-invaders-class.js";
 import { Player } from "./spawn-controller/player/player-class.js";
 

@@ -1,4 +1,4 @@
-import { gameVariables } from "../gameVariables.js";
+import { gameVariables } from "../game-variables.js";
 import { auroraTitanSpaceShip, blueSpaceShip, createPlayerAuroraTitanSpaceShip, createPlayerBlueSpaceShip, createPlayerInterceptorAlphaSpaceShip, createPlayerWhiteSpaceShip, interceptorAlphaSpaceShip, whiteSpaceShip } from "../spawn-controller/player/player-assets.js";
 
 

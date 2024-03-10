@@ -1,4 +1,4 @@
-import { gameVariables } from "../../gameVariables.js";
+import { gameVariables } from "../../game-variables.js";
 // import { GridBoss } from "./grid-boss-class.js";
 import { Grid } from "./grid-invaders-class.js";
 

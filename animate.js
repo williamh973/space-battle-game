@@ -1,5 +1,5 @@
-import { canvasParam, selectedCanvasColor } from "./canvasParam.js";
-import { gameVariables } from "./gameVariables.js";
+import { canvasParam, selectedCanvasColor } from "./canvas-parameters.js";
+import { gameVariables } from "./game-variables.js";
 import { checkAlienMissileOffscreenBottom, missilePlayerUpdate } from "./spawn-controller/missile/missile-update.js";
 import { particleUpdate } from "./spawn-controller/particle/particle-update.js";
 import { alienMissileFireRate } from "./spawn-controller/missile/alien-missile-fire-rate.js";

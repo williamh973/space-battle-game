@@ -27,6 +27,18 @@ body{
     text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.388);
 }
 
+#container-start {
+    justify-content: flex-end;
+}
+
+#child-menu-start {
+    width: 75%;
+    height: 60px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
 #menu-canvas-color,
 #menu-player-color,
 #menu-alien-color {
@@ -64,8 +76,25 @@ body{
     border: none
 }
 
-#btn-start:hover {
+#btn-autoshoot {
+    width: 100px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: whitesmoke;
+    background-color: transparent;
+    border-radius: 5px;
+    border: 1px solid white;
+}
+
+#btn-start:hover, #btn-autoshoot:hover {
     cursor: pointer;
+    border: 1px solid rgb(255, 22, 22);
+} 
+
+#btn-start:active, #btn-autoshoot:active {
+    scale: 0.95;
 } 
 
 #player-spaceship-preview, #alien-spaceship-preview {

@@ -1,5 +1,6 @@
-import { gameVariables } from "./gameVariables.js";
-import { spawnMissile } from "./interface.js";
+import { manualShoot } from "./auto-shoot.js";
+
+
 
 export const keys = {
     q:{
@@ -19,8 +20,6 @@ export const keys = {
     }
 };
 
-
-// clavier touches
 window.addEventListener('keydown',(event)=>{
     switch(event.key){
         case 'q':
@@ -39,8 +38,7 @@ window.addEventListener('keydown',(event)=>{
             if (event.repeat) {
                 return
             }
-            gameVariables.player.shoot();
-            spawnMissile();
+            manualShoot();
         break;
     } 
 })
@@ -64,3 +62,4 @@ window.addEventListener('keyup',(event)=>{
         break;
     }
 })
+
