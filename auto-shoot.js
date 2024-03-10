@@ -2,7 +2,6 @@ import { gameVariables } from "./game-variables.js";
 import { increaseHudMissileShooted } from "./interface.js";
 
 
-
 export const startAutoShootIfModActived = () => {
     if (gameVariables.isAutomaticalShootMod) {
         autoShoot();

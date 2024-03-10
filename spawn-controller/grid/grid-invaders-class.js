@@ -1,5 +1,5 @@
-import { canvasParam } from "../../canvasParam.js";
-import { gameVariables } from "../../gameVariables.js";
+import { canvasParam } from "../../canvas-parameters.js";
+import { gameVariables } from "../../game-variables.js";
 import { Alien } from "../alien/alien-class.js";
 import { Boss } from "../boss/boss-class.js";
 

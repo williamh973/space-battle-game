@@ -1,4 +1,4 @@
-import { gameVariables } from "../../gameVariables.js";
+import { gameVariables } from "../../game-variables.js";
 import { substractPlayerLife } from "../../interface.js";
 import { Particule } from "../particle/particle-class.js";
 

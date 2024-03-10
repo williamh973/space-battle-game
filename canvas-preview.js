@@ -1,4 +1,4 @@
-import { canvasParam, selectedCanvasColor } from "./canvasParam.js";
+import { canvasParam, selectedCanvasColor } from "./canvas-parameters.js";
 
 
 

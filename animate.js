@@ -61,7 +61,6 @@ import { drawStars } from "./spawn-controller/stars/stars-manager.js";
 
             
         gameVariables.player.update();
-        // gameVariables.player.drawDebugCollisionSquare();
         gameVariables.frames++;
     };
     

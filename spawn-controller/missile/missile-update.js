@@ -1,5 +1,5 @@
-import { canvasParam } from "../../canvasParam.js";
-import { gameVariables } from "../../gameVariables.js";
+import { canvasParam } from "../../canvas-parameters.js";
+import { gameVariables } from "../../game-variables.js";
 import { alienMissileCollidePlayer } from "./alien-missile-collide.js";
 
 export const missilePlayerUpdate = () => {
