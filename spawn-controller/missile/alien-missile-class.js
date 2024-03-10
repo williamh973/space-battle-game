@@ -3,9 +3,13 @@ import { gameVariables } from "../../game-variables.js";
 
 
 export class AlienMissile{
-    constructor({position, velocity, width, height, color}){
+    constructor({position, width, height, color}) {
+        this.speed = 5;
         this.position = position;
-        this.velocity = velocity;
+        this.velocity = {
+          x: 0,
+          y: this.speed
+        };
         this.width = width;
         this.height = height;
         this.color = color
@@ -15,6 +19,8 @@ export class AlienMissile{
       canvasParam.c.beginPath();
       canvasParam.c.save();
       canvasParam.c.fillStyle = this.color;
+      canvasParam.c.shadowColor = 'yellow';
+      canvasParam.c.shadowBlur = 7;
       
       canvasParam.c.fillRect(
         this.position.x,
