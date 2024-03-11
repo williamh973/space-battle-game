@@ -90,6 +90,19 @@ export const addScore = () => {
     gameVariables.scoreTag.innerText = "Score  " + gameVariables.score 
 };
 
+export const addPlayerLife = () => {
+    gameVariables.lifes += 1;
+    gameVariables.lifeTag.innerText = "Lifes  " + gameVariables.lifes;
+};
+
+export const addPlayerVelocity = (player) => {
+    player.velocityBoosted();
+};
+
+export const addPlayerTrippleMissile = (player) => {
+    player.shootBoosted();
+}
+
 export const substractPlayerLife = () => {
     gameVariables.lifes -= 1;
     gameVariables.lifeTag.innerText = "Lifes  " + gameVariables.lifes;

@@ -2,20 +2,18 @@ import { canvasParam } from "../../canvas-parameters.js";
 import { gameVariables } from "../../game-variables.js";
 
 export class Missile{
-    constructor({position}) {
-      this.speed = -5;
+    constructor({position, velocity, color, shadowBlur}) {
       this.position = position;
-      this.velocity = {
-          x: 0,
-          y: this.speed
-      } 
+      this.velocity = velocity;
       this.width = 3;
       this.height = 20;
+      this.color = color;
+      this.shadowBlur = shadowBlur;
     }
     draw() {
       canvasParam.c.save();
-      canvasParam.c.fillStyle = 'blue';
-      canvasParam.c.shadowColor = 'cyan';
+      canvasParam.c.fillStyle = this.color;
+      canvasParam.c.shadowColor = this.shadowBlur;
       canvasParam.c.shadowBlur = 8;
   
       canvasParam.c.fillRect(
@@ -30,6 +28,7 @@ export class Missile{
     }
     update(){
       if(!gameVariables.isGameOver) {
+        this.position.x += this.velocity.x;
         this.position.y += this.velocity.y;
         this.draw();
       }

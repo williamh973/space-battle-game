@@ -1,5 +1,6 @@
 import { gameVariables } from "../../game-variables.js";
 import { addScore, substractBossLife, substractInvaders, updateLevelNumber } from "../../interface.js";
+import { spawnRandomAbilities } from "../abilities/ability-spawn.js";
 import { checkIfBossKo } from "../boss/boss-dead.js";
 import { spawnBossGrid, spawnNewGrid } from "../grid/spawn-grid.js";
 import { spawnParticles } from "../particle/particle-spawn.js";
@@ -23,6 +24,7 @@ export const playerMissileCollideInvaders = (
              gameVariables.missiles.splice(indexM, 1);
 
              if (!gameVariables.isBossLevel) {
+                    spawnRandomAbilities(invader);
                     grid.invaders.splice(indexI, 1);
                     addScore();
                     substractInvaders();

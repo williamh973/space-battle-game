@@ -17,9 +17,11 @@ export class Player{
             y: 0
         };
         this.image = gameVariables.spaceshipName;
+        this.isVelocityBoosted = false;
+        this.isTrippleMissilesEffect = false;
     }
 
-    draw(){
+    draw() {
         if(this.image && !gameVariables.isGameOver && !gameVariables.isPlayerWin) {
             canvasParam.c.drawImage(
                 this.image,
@@ -31,52 +33,132 @@ export class Player{
         }
     }
 
-    shoot(){
-        if (!gameVariables.isGameOver && !gameVariables.isPlayerWin) {   
+    shoot() {
+        if (
+            !gameVariables.isGameOver && 
+            !gameVariables.isPlayerWin && 
+            !this.isTrippleMissilesEffect
+            ) {   
             gameVariables.missiles.push(new Missile({
                 position:{
                     x: this.position.x + this.width/2,
                     y: this.position.y
                 },  
+                velocity:{
+                    x: 0,
+                    y: -5
+                },
+                color: 'blue',
+                shadowBlur: 'cyan'
+            }));
+        } else if (
+            !gameVariables.isGameOver && 
+            !gameVariables.isPlayerWin && 
+            this.isTrippleMissilesEffect
+            ) {   
+            gameVariables.missiles.push(new Missile({
+                position:{
+                    x: this.position.x + this.width/2,
+                    y: this.position.y
+                },
+                velocity:{
+                    x: -0.5,
+                    y: -8
+                },
+                color: 'purple',
+                shadowBlur: 'pink'
+            })),
+            gameVariables.missiles.push(new Missile({
+                position:{
+                    x: this.position.x + this.width/2,
+                    y: this.position.y
+                },  
+                velocity:{
+                    x: 0,
+                    y: -8
+                },
+                color: 'purple',
+                shadowBlur: 'pink'
+            }));
+            gameVariables.missiles.push(new Missile({
+                position:{
+                    x: this.position.x + this.width/2,
+                    y: this.position.y
+                },
+                velocity:{
+                    x: 0.5,
+                    y: -8
+                },
+                color: 'purple',
+                shadowBlur: 'pink'
             }));
         }
     }
 
-   update(){
-       if(this.image){
-           if (
-            (keys.ArrowLeft.pressed && this.position.x >= 10) ||
-            (keys.q.pressed && this.position.x >= 10) 
-            ){
-               this.velocity.x = -5;
+   velocityBoosted() {
+        return (
+            this.isVelocityBoosted = true,
+          setTimeout(() => {
+              this.isVelocityBoosted = false
+          }, 10000)
+          )
+   }
 
-            } else if (
-                (keys.ArrowRight.pressed && this.position.x <= canvasParam.canvas.width - this.width - 10) || 
-                (keys.d.pressed && this.position.x <= canvasParam.canvas.width - this.width - 10)
-                ){
+   shootBoosted() {
+    return (
+        this.isTrippleMissilesEffect = true,
+      setTimeout(() => {
+          this.isTrippleMissilesEffect = false
+      }, 10000)
+      )
+    }
+
+   update(){
+       if (this.image && !this.isVelocityBoosted) {
+
+           if ((
+            keys.ArrowLeft.pressed || 
+            keys.q.pressed
+            ) && 
+            this.position.x >= 10 
+            ) {
+               this.velocity.x = -5;
+            } else if ((
+                keys.ArrowRight.pressed || 
+                keys.d.pressed
+                ) && 
+                this.position.x <= canvasParam.canvas.width - this.width - 10
+                ) {
                 this.velocity.x = 5;
             } else{
                 this.velocity.x = 0;
-            }
+            };
+
+            this.position.x += this.velocity.x;
+            this.draw();
+        } else if (this.image && this.isVelocityBoosted) {
+
+           if ((
+            keys.ArrowLeft.pressed || 
+            keys.q.pressed
+            ) && 
+            this.position.x >= 10 
+            ) {
+               this.velocity.x = -8;
+            } else if ((
+                keys.ArrowRight.pressed || 
+                keys.d.pressed
+                ) && 
+                this.position.x <= canvasParam.canvas.width - this.width - 10
+                ) {
+                this.velocity.x = 8;
+            } else{
+                this.velocity.x = 0;
+            };
+
             this.position.x += this.velocity.x;
             this.draw();
         }
     }
 
-    drawDebugCollisionSquare() {
-        const ctx = canvasParam.c;
-        ctx.beginPath();
-        ctx.strokeStyle = 'red';
-        ctx.lineWidth = 1;
-
-        ctx.rect(
-            this.position.x,
-            this.position.y,
-            this.width,
-            this.height
-        );
-
-        ctx.stroke();
-        ctx.closePath();
-    }
 } 

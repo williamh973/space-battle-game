@@ -4,6 +4,7 @@ export const gameVariables = {
   grids : [],
   gridsBoss : [],
   particules : [],
+  abilityList : [],
   frames : 0,
   lifes : 3,
   level : 1,

@@ -8,6 +8,7 @@ import { updateInvaderNumber } from "./interface.js";
 import { checkIfGameOver } from "./game-over.js";
 import { checkIfPlayerWin } from "./victory.js";
 import { drawStars } from "./spawn-controller/stars/stars-manager.js";
+import { playerCollideAbilities } from "./spawn-controller/abilities/ability-collide.js";
 
 
   
@@ -54,11 +55,15 @@ import { drawStars } from "./spawn-controller/stars/stars-manager.js";
             particleUpdate();
             missilePlayerUpdate();
             checkAlienMissileOffscreenBottom();
+            playerCollideAbilities(gameVariables.player);
             
             if (gameVariables.isEndGame) {
                 checkIfPlayerWin();  
             }
 
+        gameVariables.abilityList.forEach((ability) => {
+            ability.update();
+        })
             
         gameVariables.player.update();
         gameVariables.frames++;
