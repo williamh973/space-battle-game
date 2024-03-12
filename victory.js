@@ -14,7 +14,6 @@ export const drawTextVictory = () => {
     const y = canvasParam.canvas.height / 2;
     canvasParam.c.strokeText(text, x, y);
     canvasParam.c.fillText(text, x, y);
-    console.log("text", text);
 };
 
 

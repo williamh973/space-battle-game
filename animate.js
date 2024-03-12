@@ -9,6 +9,7 @@ import { checkIfGameOver } from "./game-over.js";
 import { checkIfPlayerWin } from "./victory.js";
 import { drawStars } from "./spawn-controller/stars/stars-manager.js";
 import { playerCollideAbilities } from "./spawn-controller/abilities/ability-collide.js";
+import { objectMovement } from "./objects-movements/objects-movement.js";
 
 
   
@@ -64,8 +65,10 @@ import { playerCollideAbilities } from "./spawn-controller/abilities/ability-col
         gameVariables.abilityList.forEach((ability) => {
             ability.update();
         })
-            
+
         gameVariables.player.update();
+        objectMovement(gameVariables.player);
+        
         gameVariables.frames++;
     };
     

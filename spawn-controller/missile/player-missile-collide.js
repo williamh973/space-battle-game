@@ -36,7 +36,7 @@ export const playerMissileCollideInvaders = (
              
              
              setTimeout(() => {
-                    if (gameVariables.level <= 49) {
+                    if (gameVariables.level <= 59) {
                         spawnNewGrid(grid, indexGrid);
                     } else {
                         spawnBossGrid(grid, indexGrid);

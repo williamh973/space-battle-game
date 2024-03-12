@@ -1,5 +1,4 @@
 import { gameVariables } from "../../game-variables.js";
-// import { GridBoss } from "./grid-boss-class.js";
 import { Grid } from "./grid-invaders-class.js";
 
 
@@ -17,8 +16,6 @@ export const spawnBossGrid = (grid, indexGrid) => {
         gameVariables.isBossLevel = true;
         gameVariables.grids.splice(indexGrid, 1);
         gameVariables.grids.push(new Grid());  
-        // gridBoss.invaders.drawDebugCollisionSquare();
-        console.log("gameVariables.grids", gameVariables.grids, "grid", grid)
       }, 3000);
     }
 };

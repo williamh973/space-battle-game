@@ -25,7 +25,7 @@ export class Grid{
     }
 
     draw() {
-        if (gameVariables.level <= 49) { 
+        if (gameVariables.level <= 59) { 
             this.width = this.colums * this.scale;
             this.height = this.rows * this.scale;
 
@@ -39,7 +39,7 @@ export class Grid{
                     }))
                 }
             }
-        } else  if (gameVariables.level === 50) {
+        } else  if (gameVariables.level === 60) {
             const bossWidth = 70;
             const bossHeight = 100;
 

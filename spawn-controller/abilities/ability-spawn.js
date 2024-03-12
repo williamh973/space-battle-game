@@ -11,16 +11,18 @@ export const spawnRandomAbilities = (invader) => {
 const randomAbilities = (healthAbility, speedAbility, trippleMissileAbility) => {
     let randomNumber = Math.random();
 
-   if (randomNumber <= 0.33) {
-       gameVariables.abilityList.push(healthAbility);  
-       healthAbility.name = 'health';      
-   } else if (randomNumber > 0.33 && randomNumber <= 0.66) {
-       gameVariables.abilityList.push(speedAbility);   
-       speedAbility.name = 'speed'; 
-   } else {
-       gameVariables.abilityList.push(trippleMissileAbility);
-       trippleMissileAbility.name = 'triple';  
-   };
+    if (randomNumber <= 0.02) {
+        gameVariables.abilityList.push(healthAbility);  
+        healthAbility.name = 'health';      
+    } else if (randomNumber > 0.02 && randomNumber <= 0.04) {
+        gameVariables.abilityList.push(speedAbility);   
+        speedAbility.name = 'speed'; 
+    } else if (randomNumber > 0.04 && randomNumber <= 0.06) {
+        gameVariables.abilityList.push(trippleMissileAbility);
+        trippleMissileAbility.name = 'triple';  
+    } else {
+     return;
+    }
 };
 
 

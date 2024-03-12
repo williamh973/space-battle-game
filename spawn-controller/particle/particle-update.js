@@ -9,4 +9,12 @@ export const particleUpdate = () => {
             particule.update();
         }
     }) 
+
+    gameVariables.abilityParticuleList.forEach((particule, index)=>{
+        if(particule.opacity <= 0) {
+            gameVariables.abilityParticuleList.splice(index, 1)
+        } else {
+            particule.update();
+        }
+    })  
 };
