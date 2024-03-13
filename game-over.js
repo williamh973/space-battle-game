@@ -3,9 +3,11 @@ import { gameVariables } from "./game-variables.js";
 
 
 export const drawTextGameOver = () => {
-    canvasParam.c.font = '50px Arial';
+    canvasParam.c.font = '80px Fantasy';
     canvasParam.c.fillStyle = 'black';
-    canvasParam.c.strokeStyle = 'white';
+    canvasParam.c.strokeStyle = 'whitesmoke';
+    canvasParam.c.shadowColor = 'white';
+    canvasParam.c.shadowBlur = 5;
     canvasParam.c.lineWidth = 3; 
     canvasParam.c.textAlign = 'center';
     canvasParam.c.textBaseline = 'middle';
