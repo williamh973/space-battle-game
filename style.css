@@ -1,52 +1,53 @@
 * {
-    padding: 0;
-    margin: 0;
+  padding: 0;
+  margin: 0;
 }
 
-body{
-    background-color: rgba(0, 0, 0, 0.897);
-    width: 100vw;
-    height: 103vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
+body {
+  background-color: rgba(0, 0, 0, 0.897);
+  width: 100vw;
+  height: 103vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
 }
 
 .menu {
-    background-color: rgba(0, 0, 0, 0.592);
-    width: 800px;
-    height: 60px;
-    border-radius: 15px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    color: whitesmoke;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.388);
+  background-color: rgba(0, 0, 0, 0.592);
+  width: 800px;
+  height: 60px;
+  border-radius: 15px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  color: whitesmoke;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.388);
 }
 
 #container-start {
-    justify-content: flex-end;
+  justify-content: flex-end;
 }
 
 #child-menu-start {
-    width: 75%;
-    height: 60px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+  width: 75%;
+  height: 60px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
 #menu-canvas-color,
 #menu-player-color,
 #menu-alien-color {
-    width: 160px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
+  width: 160px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .child-menu {
@@ -56,49 +57,52 @@ body{
   margin: 5px;
 }
 .child-menu:hover {
-    cursor: pointer;  
-    border: 1px solid rgb(255, 22, 22);
+  cursor: pointer;
+  border: 1px solid rgb(255, 22, 22);
 }
 
 #hud {
-    display: none;    
+  display: none;
 }
 
 #btn-start {
-    width: 300px;
-    height: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: whitesmoke;
-    background-color: rgba(0, 255, 26, 0.592);
-    border-radius: 5px;
-    border: none
+  width: 300px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: whitesmoke;
+  background-color: rgba(0, 255, 26, 0.592);
+  border-radius: 5px;
+  border: none;
 }
 
 #btn-autoshoot {
-    width: 100px;
-    height: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: whitesmoke;
-    background-color: transparent;
-    border-radius: 5px;
-    border: 1px solid white;
+  width: 100px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: whitesmoke;
+  background-color: transparent;
+  border-radius: 5px;
+  border: 1px solid white;
 }
 
-#btn-start:hover, #btn-autoshoot:hover {
-    cursor: pointer;
-    border: 1px solid rgb(255, 22, 22);
-} 
+#btn-start:hover,
+#btn-autoshoot:hover {
+  cursor: pointer;
+  border: 1px solid rgb(255, 22, 22);
+}
 
-#btn-start:active, #btn-autoshoot:active {
-    scale: 0.95;
-} 
+#btn-start:active,
+#btn-autoshoot:active {
+  scale: 0.95;
+}
 
-#player-spaceship-preview, #alien-spaceship-preview {
-    width: 32px;
-    height: 32px;
-    border: 1px solid rgb(37, 37, 37);
+#player-spaceship-preview,
+#alien-spaceship-preview {
+  width: 32px;
+  height: 32px;
+  border: 1px solid rgb(37, 37, 37);
 }
